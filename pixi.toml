@@ -1,0 +1,16 @@
+[workspace]
+channels = ["conda-forge"]
+name = "editorial-board"
+platforms = ["linux-64", "osx-arm64", "win-64"]
+exclude-newer = "7d"
+[dependencies]
+# conda-forge ships the *extended* Hugo build, so SCSS/SASS works out of the box.
+hugo = "0.161.1.*"
+# Hugo Modules (PaperMod is imported as a module) need the Go toolchain to resolve.
+go = "*"
+
+[tasks]
+build = "hugo --gc --minify"
+preview = "hugo --gc --minify --buildFuture"
+branch = "hugo --gc --minify"
+serve = "hugo server"
